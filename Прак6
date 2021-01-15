@@ -1,0 +1,38 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+void main()
+{
+    setlocale (0,"Russian");
+    srand (time(0));
+    const int size = 10;
+    int A[size][size];
+    int max = 0;
+    // Инициализация двумерного массива и вывод
+ 
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            A[i][j] = rand() % 100;
+            printf(A[i][j],"\t");
+        }
+        printf(endl);
+    }
+    printf(endl);
+    printf("Числа кратные пяти: \n\n");
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            // Вывод чисел, кратных пяти
+            if (A[i][j] % 5 == 0)
+                printf (A[i][j],"\t");
+            // Нахождение наибольшего числа, массива
+            if (A[i][j] > max)
+                max = A[i][j];
+        }
+    }
+    printf(endl,endl);
+    printf("Максимальное число: ",max,"\n");
+}
