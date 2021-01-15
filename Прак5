@@ -1,0 +1,29 @@
+#include <stdio.h>
+ 
+int main ()
+{
+    int arr[] = {0, -4, 8, -4, 77, 0, -4}, tmp, i, j;
+    size_t size = sizeof(arr) / sizeof(*arr), cntr;
+    if(size)
+    {
+        for(i = 0; i < size; ++i) // сортировка по возрастанию
+        {
+            tmp = arr[i];
+            for(j = i - 1; j >= 0 && arr[j] > tmp; --j)
+            {
+                arr[j + 1] = arr[j];
+            }
+            arr[j + 1] = tmp;
+        }
+        for(i = 0, j = 0, cntr = 0; j <= size; ++j, ++cntr) // подсчёт и печать
+        {
+            if(arr[i] != arr[j] || j == size)
+            {
+                printf("%d - %u times\n", arr[i], cntr);
+                cntr = 0;
+                i = j;
+            }
+        }
+    }
+    return 0;
+}
